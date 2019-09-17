@@ -1,6 +1,4 @@
 from vagrant_tabcomplete import completer
 
-comp_instance = completer.Completer()
-comp = comp_instance.complete
-
+comp = completer.Completer.complete
 completer add vagrant comp
