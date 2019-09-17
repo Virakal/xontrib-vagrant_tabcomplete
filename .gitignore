@@ -1,3 +1,9 @@
+# IDE stuff
+/.vscode
+
+
+## Github Python Gitignore below...
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
