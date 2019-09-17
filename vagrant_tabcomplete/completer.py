@@ -1,3 +1,4 @@
+import re
 
 
 class Completer:
@@ -40,22 +41,10 @@ class Completer:
         self.begidx = begidx
         self.endidx = endidx
         self.ctx = ctx
+        self.tokens = re.split(r'\s+', line.strip())
 
     def should_complete(self):
-        line = self.line.strip()
-
-        if line.startswith('vagrant'):
-            return True
-
-        aliases = self._get_vagrant_aliases()
-
-        return False
-
-    def _get_vagrant_aliases(self):
-        """Get a list of aliases that call vagrant"""
-        # TODO: We need to do something smarter to handle e.g. `alises['vp'] = ['vagrant', 'plugin']` though!
-
-        return {k for (k, v) in aliases.items() if hasattr(v, '__iter__') and v[0] == 'vagrant'}
+        return self.tokens[0] == 'vagrant'
 
     def _complete(self):
         if not self.should_complete():
