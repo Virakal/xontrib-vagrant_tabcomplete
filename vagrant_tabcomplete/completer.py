@@ -76,6 +76,9 @@ class Completer:
     def complete_top_level_command(self):
         return {x for x in self.top_level_commands if x.startswith(self.prefix)}
 
+    def complete_help(self):
+        return self.complete_top_level_command()
+
     @classmethod
     def complete(cls, prefix, line, begidx, endidx, ctx):
         comp = cls(prefix, line, begidx, endidx, ctx)
